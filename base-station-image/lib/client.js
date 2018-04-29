@@ -4,12 +4,15 @@ const log = debug('xbuild:client');
 const logV = debug('xbuild-v:client');
 
 const config = require('../config.json');
+const keys = require('../keys.json');
 
 const recognition = (type, callback) => {
     log(`recognition type: ${type}`)
     let url = '';
     if (type == 'swimming') {
+        url = `https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=${keys.waston_api_key}&url=https://s3.amazonaws.com/xbuild-object/candidate.jpg&version=2018-03-19`;
     } else {
+        url = `https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=${keys.waston_api_key}&url=https://s3.amazonaws.com/xbuild-object/candidate.jpg&version=2018-03-19&classifier_ids=sharksv2_2027294388`;
     }
     request.get({ url: url }, (err, httpResponse, body) => {
         if (err) {
