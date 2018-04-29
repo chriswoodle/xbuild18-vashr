@@ -1,0 +1,5 @@
+{
+    "host": "http://10.9.7.228:7001",
+    "serialport": "/dev/ttyACM0",
+    "baudRate": "9600"
+}

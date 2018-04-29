@@ -1,0 +1,10 @@
+{
+    "drone_host": "http://10.9.4.118:7002",
+    "keywords": [
+        "shark",
+        "drowning",
+        "medical",
+        "sharp"
+    ],
+    "keywords_threshold": 0.3
+}

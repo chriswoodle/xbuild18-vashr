@@ -1,0 +1,5 @@
+{
+    "serialport": "/dev/tty.usbmodem14441",
+    "baudRate": "115200",
+    "drone_host": "http://10.9.4.118:7002"
+}
