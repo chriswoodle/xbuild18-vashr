@@ -27,7 +27,7 @@ const recognition = (type, callback) => {
             body.images[0].classifiers[0].classes) {
             if (body.images[0].classifiers[0].classes.length == 0) {
                 log('Nothing found.');
-                tss('No target found');
+                tts('No target found');
                 return callback(false);
             }
             if (body.images[0].classifiers[0].classes.length == 1) {
