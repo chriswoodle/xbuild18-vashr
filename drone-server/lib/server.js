@@ -16,6 +16,7 @@ app.get('/status', (req, res) => res.send('Up!'))
 let type = '';
 app.post('/type', function (req, res) {
     log('Type...');
+    log(req.body.type);
     type = req.body.type;
     res.send('Ok');
     log('200 /type');
@@ -27,13 +28,22 @@ app.post('/scan', function (req, res) {
     res.send('Ok');
     log('200 /scan');
     // Start drone scanning
-    if (type == 'shark' || type == 'medical') {
+    if (type == 'shark' || type == 'medical' || type == 'drowning') {
+        log('Start drone scanning');
         drone.flybaseFP(() => {
             client.upload('/home/pi/00.jpg', 0, 0, type);
-            client.upload('/home/pi/01.jpg', 0, 1, type);
-            client.upload('/home/pi/10.jpg', 1, 0, type);
-            client.upload('/home/pi/11.jpg', 1, 1, type);
+            setTimeout(() => {
+                client.upload('/home/pi/01.jpg', 0, 1, type);
+            }, 5000);
+            setTimeout(() => {
+                client.upload('/home/pi/10.jpg', 1, 0, type);
+            }, 10000);
+            setTimeout(() => {
+                client.upload('/home/pi/11.jpg', 1, 1, type);
+            }, 15000);
         });
+    } else {
+        log('Incorret scan type');
     }
 });
 

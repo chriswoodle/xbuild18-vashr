@@ -1,5 +1,6 @@
-const fs = require("fs");
-const request = require("request");
+const fs = require('fs');
+const request = require('request');
+const client = require('./client');
 
 const requestScan = (host, type) => {
     const formData = {
@@ -20,6 +21,9 @@ const requestTarget = (host, type) => {
             return console.error('Error:', err);
         }
         console.log('Server responded with:', body);
+        setTimeout(() => {
+            client.tts('Deploying Sky Crane.');
+         }, 5000);
     });
 };
 

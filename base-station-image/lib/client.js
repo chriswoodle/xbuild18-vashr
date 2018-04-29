@@ -9,7 +9,7 @@ const keys = require('../keys.json');
 const recognition = (type, x, y, callback) => {
     log(`recognition type: ${type}`)
     let url = '';
-    if (type == 'swimming') {
+    if (type == 'drowning') {
         url = `https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=${keys.waston_api_key}&url=https://s3.amazonaws.com/xbuild-object/candidate.jpg&version=2018-03-19`;
     } else {
         url = `https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=${keys.waston_api_key}&url=https://s3.amazonaws.com/xbuild-object/candidate.jpg&version=2018-03-19&classifier_ids=sharksv2_2027294388`;
@@ -46,7 +46,6 @@ const recognition = (type, x, y, callback) => {
                         break;
                     default:
                         log('Nothing found.');
-                        tss('No target found');
                         return callback(false);
                 }
             } else {
@@ -58,7 +57,7 @@ const recognition = (type, x, y, callback) => {
                         return callback(true);
                     }
                 }
-                tss('No target found');
+                tts('No target found');
                 return callback(false);
             }
         }
@@ -84,5 +83,6 @@ const tts = (message) => {
 };
 
 module.exports = {
-    recognition: recognition
+    recognition: recognition,
+    tts: tts
 };
