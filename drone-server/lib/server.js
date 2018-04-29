@@ -27,7 +27,7 @@ app.post('/scan', function (req, res) {
     res.send('Ok');
     log('200 /scan');
     // Start drone scanning
-    if (type == 'shark' || type == 'boat') {
+    if (type == 'shark' || type == 'medical') {
         drone.flybaseFP(() => {
             client.upload('/home/pi/00.jpg', 0, 0, type);
             client.upload('/home/pi/01.jpg', 0, 1, type);

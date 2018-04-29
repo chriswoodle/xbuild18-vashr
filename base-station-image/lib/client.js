@@ -6,7 +6,7 @@ const logV = debug('xbuild-v:client');
 const config = require('../config.json');
 const keys = require('../keys.json');
 
-const recognition = (type, callback) => {
+const recognition = (type, x, y, callback) => {
     log(`recognition type: ${type}`)
     let url = '';
     if (type == 'swimming') {
@@ -35,13 +35,13 @@ const recognition = (type, callback) => {
                 switch (body.images[0].classifiers[0].classes[0].class) {
                     case 'shark':
                         log('Found shark');
-                        tts('Target shark located');
+                        tts(`Target shark located at ${x}, ${y}`);
                         return callback(true);
 
                         break;
                     case 'boat':
                         log('Found boat');
-                        tts('Target boat located');
+                        tts(`Target boat located at ${x}, ${y}`);
                         return callback(true);
                         break;
                     default:
@@ -54,7 +54,7 @@ const recognition = (type, callback) => {
                     logV(recognizedClass.class);
                     if (recognizedClass.class == 'swimming') {
                         log('Found swimming');
-                        tts('Target swimmer located');
+                        tts(`Target swimmer located at ${x}, ${y}`);
                         return callback(true);
                     }
                 }

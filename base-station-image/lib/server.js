@@ -37,9 +37,9 @@ app.post('/upload', function (req, res) {
         log('200 /upload');
         log('uploading to s3...')
         aws.uploadToS3(filename, () => {
-            client.recognition(type, (found) => {
+            client.recognition(type, x, y, (found) => {
                 log(found);
-                if(found) {
+                if (found) {
                     drone.requestTarget('10.9.4.118', type);
                 }
             });
