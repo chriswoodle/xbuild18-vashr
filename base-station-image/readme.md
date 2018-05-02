@@ -1,3 +1,9 @@
+# About
+
+This application sends uploaded images to IBM Watson for processing. 
+
+If an image contains on of the target items, the server will notify the drone-server.
+
 # Setup node
 ```
 npm install
